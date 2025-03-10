@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Pakar Diagnosa Kerusakan Laptop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Diagnosa Kerusakan Laptop</h1>
+        <p>Jawab pertanyaan berikut untuk mengetahui kemungkinan kerusakan pada laptop Anda.</p>
+        
+        <div id="questions">
+            <div class="question" id="q1">
+                <p>Apakah laptop tidak menyala?</p>
+                <button onclick="nextQuestion(1, 'yes')">Ya</button>
+                <button onclick="nextQuestion(1, 'no')">Tidak</button>
+            </div>
+
+            <div class="question hidden" id="q2_yes">
+                <p>Apakah ada suara kipas saat dinyalakan?</p>
+                <button onclick="nextQuestion(2, 'yes')">Ya</button>
+                <button onclick="nextQuestion(2, 'no')">Tidak</button>
+            </div>
+
+            <div class="question hidden" id="q3_yes">
+                <p>Apakah layar menampilkan sesuatu?</p>
+                <button onclick="showResult('Layar bermasalah. Coba periksa koneksi kabel layar atau ganti layar.')">Tidak</button>
+                <button onclick="showResult('Laptop hidup normal. Coba cek masalah lain.')">Ya</button>
+            </div>
+
+            <div class="question hidden" id="q3_no">
+                <p>Apakah lampu indikator menyala?</p>
+                <button onclick="showResult('Kemungkinan masalah pada RAM atau motherboard. Coba bersihkan RAM atau ganti dengan yang lain.')">Ya</button>
+                <button onclick="showResult('Baterai atau adaptor rusak. Coba gunakan adaptor lain atau ganti baterai.')">Tidak</button>
+            </div>
+
+            <div class="question hidden" id="q2_no">
+                <p>Apakah baterai terisi atau dicoba dengan adaptor lain?</p>
+                <button onclick="showResult('Adaptor atau motherboard bermasalah. Coba ganti adaptor atau periksa motherboard.')">Ya</button>
+                <button onclick="showResult('Kemungkinan baterai atau motherboard rusak. Disarankan untuk diperiksa ke teknisi.')">Tidak</button>
+            </div>
+        </div>
+
+        <div id="result" class="hidden">
+            <h2>Hasil Diagnosa</h2>
+            <p id="diagnosis"></p>
+            <button onclick="restart()">Coba Lagi</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
